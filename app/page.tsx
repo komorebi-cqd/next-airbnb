@@ -1,8 +1,8 @@
 
 export default function Home() {
   return (
-    <div>
-      hello world
+    <div className="font-smiley">
+      hello world 11111111
     </div>
   )
 }
