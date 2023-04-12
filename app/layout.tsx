@@ -1,4 +1,6 @@
 
+import Navbar from './components/Navbar/Navbar'
+import ClientOnly from './components/ClientOnly'
 import './globals.css'
 
 export const metadata = {
@@ -14,7 +16,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className='font-smiley'>{children}</body>
+      <body className='font-smiley'>
+        <ClientOnly>
+          <Navbar />
+        </ClientOnly>
+        {children}
+      </body>
     </html>
   )
 }

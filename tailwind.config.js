@@ -9,8 +9,10 @@ module.exports = {
   theme: {
     extend: {
       fontFamily:{
-        smiley: ['smiley'],
-        inter: ['Inter']
+        PHThin: ['PuHuiTi-Thin'],
+        PHLight: ['PuHuiTi-Light'],
+        PHRegular: ['PuHuiTi-Regular'],
+        PHBold: ['PuHuiTi-Bold'],
       }
     },
   },
