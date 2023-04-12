@@ -1,6 +1,8 @@
 
 import Navbar from './components/Navbar/Navbar'
+import Modal from './components/modals/Modal'
 import ClientOnly from './components/ClientOnly'
+
 import './globals.css'
 
 export const metadata = {
@@ -18,6 +20,7 @@ export default function RootLayout({
     <html lang="en">
       <body className='font-smiley'>
         <ClientOnly>
+          <Modal actionLabel='提交' title='登录' isOpen/>
           <Navbar />
         </ClientOnly>
         {children}
