@@ -1,7 +1,9 @@
 
 import Navbar from './components/Navbar/Navbar'
-import Modal from './components/modals/Modal'
+import RegisterModal from './components/modals/RegisterModal'
 import ClientOnly from './components/ClientOnly'
+import ToasterProvider from './providers/ToasterProvider'
+import { Toaster } from "react-hot-toast";
 
 import './globals.css'
 
@@ -20,7 +22,8 @@ export default function RootLayout({
     <html lang="en">
       <body className='font-smiley'>
         <ClientOnly>
-          <Modal actionLabel='提交' title='登录' isOpen/>
+          <ToasterProvider />
+          <RegisterModal />
           <Navbar />
         </ClientOnly>
         {children}

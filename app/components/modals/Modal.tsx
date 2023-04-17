@@ -84,17 +84,18 @@ const Modal: React.FC<ModalProps> = ({
                 {body}
               </div>
 
-              {/* 底部 */}
+              {/* 底部操作 */}
               <div className="flex flex-col gap-2 p-6">
                 <div className="flex flex-row items-center w-full gap-4">
                   {secondaryAction && secondaryActionLabel && (
                     <Button disabled={disable} label={secondaryActionLabel}
-                      onClick={secondaryAction} />
+                      onClick={handleSecondaryAction} />
                   )}
-                  
+
                   <Button disabled={disable} label={actionLabel}
                     onClick={handleSubmit} />
                 </div>
+                {footer}
               </div>
             </div>
           </div>
