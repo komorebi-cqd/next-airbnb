@@ -1,21 +1,40 @@
 'use client'
 
-import { useState, useCallback } from 'react'
+import { useState, useCallback, useEffect } from 'react'
 import Avatar from '../Avatar'
 import MenuItem from './MenuItem'
 
 import { AiOutlineMenu } from 'react-icons/ai'
 import useRegisterModal from '@/app/hooks/useRegisterModal'
+import useLoginModal from '@/app/hooks/useLoginModal'
+import { SafeUser } from '@/app/types'
+import { signOut } from 'next-auth/react'
 
-const UserMenu = () => {
+
+interface UserMenuProps {
+  currentUser?: SafeUser | null
+}
+
+const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
+
+  console.log({currentUser})
 
   const [isOpen, setIsOpen] = useState(false);
 
   const registermodal = useRegisterModal();
+  const loginModal = useLoginModal();
 
   const toggleOpen = useCallback(() => {
     setIsOpen((value) => !value);
-  }, [])
+  }, []);
+
+  useEffect(() => {
+    if(registermodal.isOpen || loginModal.isOpen){
+      setIsOpen(false);
+    }
+  },[registermodal.isOpen,loginModal.isOpen])
+
+
 
   return (
     <div className='relative'>
@@ -34,8 +53,26 @@ const UserMenu = () => {
       {isOpen && (
         <div className="absolute rounded-xl shadow-md w-[40vw] md:w-3/4 bg-white overflow-hidden right-0 top-12 text-sm">
           <div className="flex flex-col cursor-pointer">
-            <MenuItem label='注册' onClick={registermodal.onOpen} />
-            <MenuItem label='登录' onClick={() => { }} />
+
+            {currentUser ? (
+              <>
+                <MenuItem label='我的旅行' onClick={() => signOut()} />
+                <MenuItem label='我的喜欢' onClick={() => signOut()} />
+                <MenuItem label='我的预约' onClick={() => signOut()} />
+                <MenuItem label='我的属性' onClick={() => signOut()} />
+                <MenuItem label='我的房子' onClick={() => signOut()} />
+                <hr />
+                <MenuItem label='退出登录' onClick={() => signOut()} />
+              </>
+            ) : (
+              <>
+                <MenuItem label='注册' onClick={registermodal.onOpen} />
+                <MenuItem label='登录' onClick={loginModal.onOpen} />
+              </>
+            )
+            }
+
+
           </div>
         </div>
       )}

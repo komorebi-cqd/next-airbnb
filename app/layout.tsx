@@ -1,9 +1,10 @@
 
 import Navbar from './components/Navbar/Navbar'
 import RegisterModal from './components/modals/RegisterModal'
+import LoginModal from './components/modals/LoginModal';
 import ClientOnly from './components/ClientOnly'
 import ToasterProvider from './providers/ToasterProvider'
-import { Toaster } from "react-hot-toast";
+import getCurrentUser from './actions/getCurrentUser';
 
 import './globals.css'
 
@@ -13,18 +14,20 @@ export const metadata = {
 }
 
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
+  const currentUser =await getCurrentUser();
   return (
     <html lang="en">
       <body className='font-smiley'>
         <ClientOnly>
           <ToasterProvider />
+          <LoginModal />
           <RegisterModal />
-          <Navbar />
+          <Navbar currentUser={currentUser} />
         </ClientOnly>
         {children}
       </body>
