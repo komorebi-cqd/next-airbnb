@@ -3,7 +3,7 @@ import axios from 'axios';
 import { signIn } from 'next-auth/react'
 import { AiFillGithub } from 'react-icons/ai'
 import { FcGoogle } from 'react-icons/fc'
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import { SubmitHandler, FieldValues, useForm } from 'react-hook-form'
 
 import toast from 'react-hot-toast';
@@ -55,6 +55,15 @@ const LoginModal = () => {
         })
     };
 
+    const toggle = useCallback(
+      () => {
+        loginModal.onClose();
+        registerModal.onOpen();
+      },
+      [loginModal,registerModal],
+    )
+    
+
     const bodyContent = (
         <div className="flex flex-col gap-4">
             <Heading title='欢迎回来' subTitle='登录您的账号' />
@@ -66,12 +75,12 @@ const LoginModal = () => {
     const footerContent = (
         <div className="flex flex-col gap-4 mt-3">
             <hr />
-            <Button outline label='使用Google登录' icon={FcGoogle} onClick={() => { }} />
-            <Button outline label='使用GitHub登录' icon={AiFillGithub} onClick={() => { }} />
+            <Button outline label='使用Google登录' icon={FcGoogle} onClick={() => signIn('google')} />
+            <Button outline label='使用GitHub登录' icon={AiFillGithub} onClick={() => signIn('github')} />
             <div className="mt-4 text-center text-neutral-500 font-PHLight">
                 <div className="flex flex-row items-center justify-center gap-2">
-                    <div>已经有账号了？</div>
-                    <div onClick={loginModal.onClose} className='cursor-pointer hover:underline text-neutral-800'>去登录</div>
+                    <div>第一次使用爱彼迎？</div>
+                    <div onClick={toggle} className='cursor-pointer hover:underline text-neutral-800'>创建账号</div>
                 </div>
             </div>
         </div>
