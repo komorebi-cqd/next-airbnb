@@ -38,7 +38,8 @@ const RegisterModal = () => {
         setIsLoading(true);
 
         axios.post('/api/register', data).then(res => {
-            registerModal.onClose();
+            toast.success('注册成功');
+            toggle();
         }).catch(err => {
             toast.error('发生了一些错误');
         }).finally(() => {
@@ -80,7 +81,7 @@ const RegisterModal = () => {
     return (
         <Modal
             title='注册'
-            actionLabel='下一步'
+            actionLabel='创建账号'
             isOpen={registerModal.isOpen}
             onClose={registerModal.onClose}
             onSumbit={handleSubmit(onSumbit)}

@@ -89,7 +89,7 @@ const LoginModal = () => {
     return (
         <Modal
             title='登录'
-            actionLabel='下一步'
+            actionLabel='登录'
             isOpen={loginModal.isOpen}
             onClose={loginModal.onClose}
             onSumbit={handleSubmit(onSumbit)}
