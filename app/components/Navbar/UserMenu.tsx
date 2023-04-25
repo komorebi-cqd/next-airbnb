@@ -70,8 +70,8 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
               <>
                 <MenuItem label='我的旅行' onClick={() => router.push('/trips')} />
                 <MenuItem label='我的喜欢' onClick={() => router.push('/favorites')} />
-                <MenuItem label='我的预约' onClick={() => router.push('/reservations')} />
-                <MenuItem label='我的属性' onClick={() => router.push('/properties')} />
+                <MenuItem label='我的房子的预约' onClick={() => router.push('/reservations')} />
+                <MenuItem label='我的财产' onClick={() => router.push('/properties')} />
                 <MenuItem label='创建我的房子' onClick={rentModal.onOpen} />
                 <hr />
                 <MenuItem label='退出登录' onClick={() => signOut()} />

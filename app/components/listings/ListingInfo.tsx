@@ -46,19 +46,19 @@ const ListingInfo: React.FC<ListingInfoProps> = ({
                 <div
                     className="flex flex-row items-center gap-2 text-xl font-semibold "
                 >
-                    <div>Hosted by {user?.name}</div>
+                    <div>创建人 {user?.name}</div>
                     <Avatar src={user?.image} />
                 </div>
-                <div className="flex flex-row items-center gap-4 font-light  text-neutral-500"
+                <div className="flex flex-row items-center gap-4 font-light text-neutral-500"
                 >
                     <div>
-                        {guestCount} guests
+                        {guestCount} 客人
                     </div>
                     <div>
-                        {roomCount} rooms
+                        {roomCount} 房间
                     </div>
                     <div>
-                        {bathroomCount} bathrooms
+                        {bathroomCount} 浴室
                     </div>
                 </div>
             </div>
@@ -71,7 +71,7 @@ const ListingInfo: React.FC<ListingInfoProps> = ({
                 />
             )}
             <hr />
-            <div className="text-lg font-light  text-neutral-500">
+            <div className="text-lg font-light text-neutral-500">
                 {description}
             </div>
             <hr />

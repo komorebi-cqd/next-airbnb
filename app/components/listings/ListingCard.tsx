@@ -6,10 +6,10 @@ import { useCallback, useMemo } from "react";
 import { format } from 'date-fns';
 
 import useCountries from "@/app/hooks/useCountries";
-import { 
-  SafeListing, 
-  SafeReservation, 
-  SafeUser 
+import {
+  SafeListing,
+  SafeReservation,
+  SafeUser
 } from "@/app/types";
 
 import HeartButton from "../HeartButton";
@@ -42,14 +42,14 @@ const ListingCard: React.FC<ListingCardProps> = ({
 
   const handleCancel = useCallback(
     (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.stopPropagation();
+      e.stopPropagation();
 
-    if (disabled) {
-      return;
-    }
+      if (disabled) {
+        return;
+      }
 
-    onAction?.(actionId)
-  }, [disabled, onAction, actionId]);
+      onAction?.(actionId)
+    }, [disabled, onAction, actionId]);
 
   const price = useMemo(() => {
     if (reservation) {
@@ -63,7 +63,7 @@ const ListingCard: React.FC<ListingCardProps> = ({
     if (!reservation) {
       return null;
     }
-  
+
     const start = new Date(reservation.startDate);
     const end = new Date(reservation.endDate);
 
@@ -71,12 +71,12 @@ const ListingCard: React.FC<ListingCardProps> = ({
   }, [reservation]);
 
   return (
-    <div 
-      onClick={() => router.push(`/listings/${data.id}`)} 
+    <div
+      onClick={() => router.push(`/listings/${data.id}`)}
       className="col-span-1 cursor-pointer group"
     >
       <div className="flex flex-col w-full gap-2">
-        <div 
+        <div
           className="relative w-full overflow-hidden aspect-square rounded-xl"
         >
           <Image
@@ -86,13 +86,13 @@ const ListingCard: React.FC<ListingCardProps> = ({
             alt="Listing"
           />
           <div className="absolute top-3 right-3">
-            <HeartButton 
-              listingId={data.id} 
+            <HeartButton
+              listingId={data.id}
               currentUser={currentUser}
             />
           </div>
         </div>
-        <div className="text-lg font-semibold">
+        <div className="text-lg font-semibold truncate ">
           {location?.region}, {location?.label}
         </div>
         <div className="font-light text-neutral-500">
@@ -110,13 +110,13 @@ const ListingCard: React.FC<ListingCardProps> = ({
           <Button
             disabled={disabled}
             small
-            label={actionLabel} 
+            label={actionLabel}
             onClick={handleCancel}
           />
         )}
       </div>
     </div>
-   );
+  );
 }
- 
+
 export default ListingCard;
