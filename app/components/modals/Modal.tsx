@@ -89,7 +89,7 @@ const Modal: React.FC<ModalProps> = ({
                 <div className="flex flex-row items-center w-full gap-4">
                   {secondaryAction && secondaryActionLabel && (
                     <Button disabled={disable} label={secondaryActionLabel}
-                      onClick={handleSecondaryAction} />
+                      onClick={handleSecondaryAction} outline={true}/>
                   )}
 
                   <Button disabled={disable} label={actionLabel}
